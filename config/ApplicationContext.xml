@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd   
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-4.2.xsd   
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-4.2.xsd   
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- 开启组件扫描 -->
+	<context:component-scan base-package="cn.wzd.spring.ioc.anno"/>
+	<context:component-scan base-package="cn.wzd.spring.aop.xml"/>
+	
+	
+	<!-- 开启注解方式的aop -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<bean id="studyXml" class="cn.wzd.spring.ioc.xml.StudyXml">
+		<property name="schoolName" value="AHNU"></property>
+		<property name="score" value="99"></property>
+	</bean>
+	
+	<bean id="personXml" class="cn.wzd.spring.ioc.xml.PersonXml">
+		<property name="name" value="ydd"></property>
+		<property name="age" value="25"></property>
+		<property name="study" ref="studyXml"></property>
+	</bean>
+	
+	
+
+</beans>
